@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-build-banner",
+  "name": "@josa/nuxt-build-banner",
   "version": "1.0.0",
   "description": "a nuxt module that displays build info on the site as a banner",
   "main": "module.js",
