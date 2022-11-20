@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-build-banner",
+  "version": "1.0.0",
+  "description": "a nuxt module that displays build info on the site as a banner",
+  "main": "module.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordanopensource/nuxt-build-banner.git"
+  },
+  "keywords": [
+    "nuxt",
+    "info-banner",
+    "nuxt2",
+    "josa",
+    "jordanopensource"
+  ],
+  "author": "thamudi",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jordanopensource/nuxt-build-banner/issues"
+  },
+  "homepage": "https://github.com/jordanopensource/nuxt-build-banner#readme"
+}
