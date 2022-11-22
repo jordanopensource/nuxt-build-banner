@@ -6,13 +6,17 @@ This is a Nuxt2 banner that displays the Drone build info that are injected into
 
 npm install the package
 
+```bash
+npm i @josango/nuxt-build-banner
+```
+
 And Load it into your `nuxt.config.js` modules:
 
 ```js
   export default {
   ...
   modules: [
-    'nuxt-build-banner',
+    '@josango/nuxt-build-banner',
   ],
   ....
 }
