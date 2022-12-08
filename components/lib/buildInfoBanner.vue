@@ -94,4 +94,12 @@ export default {
 .hidden-whitespace {
   height: 36px;
 }
+
+@media (max-width: 540px) {
+  .main-container {
+    padding: 0 5px;
+    font-size: 0.7rem;
+  }
+}
+
 </style>
