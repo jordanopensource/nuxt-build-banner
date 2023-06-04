@@ -64,6 +64,10 @@ const closeBanner = () => {
 }
 </script>
 <style scoped>
+* {
+  font-family: 'IBM Plex Sans';
+  font-size: 18px;
+}
 .banner p,
 .banner a {
   color: white;
@@ -84,7 +88,9 @@ const closeBanner = () => {
 .banner {
   background-color: #019ec3;
   width: 100%;
+  height: 40px;
   z-index: 20;
+  display: flex;
 }
 .banner-container > div {
   display: flex;
