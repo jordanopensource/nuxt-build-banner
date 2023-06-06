@@ -65,8 +65,8 @@ const closeBanner = () => {
 </script>
 <style scoped>
 * {
-  font-family: 'IBM Plex Sans';
   font-size: 18px;
+  direction: ltr;
 }
 .banner p,
 .banner a {
