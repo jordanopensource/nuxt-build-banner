@@ -15,11 +15,13 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {},
   setup (options, nuxt) {
-    const resolver = createResolver(import.meta.url)
+    const { resolve } = createResolver(import.meta.url)
+
+    nuxt.options.css.push(resolve('./runtime/assets/css/typography.css'))
         
     addComponent({
       name: 'BuildInfoBanner', // name of the component to be used in vue templates
-      filePath: resolver.resolve('runtime/components/BuildInfoBanner.vue')
+      filePath: resolve('runtime/components/BuildInfoBanner.vue')
     })
   }
 })
