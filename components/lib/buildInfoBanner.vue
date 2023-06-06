@@ -1,34 +1,49 @@
 <template>
-  <div v-if="!this.bannerClosed">
-    <div class="banner">
-      <div class="main-container">
-        <div class="row-container">
-          <span>🔨</span>
-          <p>
-            <span class="font-bold">Build</span>:
-            <a
-              :href="$config.DRONE_BUILD_LINK"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              #{{ $config.DRONE_BUILD_NUMBER }}
-            </a>
-            <a
-              :href="$config.DRONE_COMMIT_LINK"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ({{ $config.DRONE_COMMIT_SHA && $config.DRONE_COMMIT_SHA.slice(0, 6) }})
-              </a>
-          </p>
-        </div>
-        <div class="row-container">
-          <span>🚧</span>
-          <p> <span class="font-bold"> Environment: </span> {{ $config.TARGET_ENV }} </p>
-          <button class="bannerBtn" v-on:click="closeBanner">
-            &#215;
-          </button>
-        </div>
+  <div v-if="!this.bannerClosed" class="banner">
+    <div class="banner-container">
+      <div>
+        <span>🔨</span>
+        <p>
+          <span class="font-bold">Build</span>:
+          <a
+            :href="$config.DRONE_BUILD_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            #{{ $config.DRONE_BUILD_NUMBER }}
+          </a>
+          <a
+            :href="$config.DRONE_COMMIT_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ({{ $config.DRONE_COMMIT_SHA && $config.DRONE_COMMIT_SHA.slice(0, 6) }})
+          </a>
+        </p>
+      </div>
+      <div>
+        <span>🚧</span>
+        <p>
+          <span class="font-bold"> Environment: </span>
+          {{ $config.TARGET_ENV }}
+        </p>
+        <button
+          class="banner-btn"
+          v-on:click="closeBanner"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            class="close-icon"
+          >
+            <path
+              fill="white"
+              d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"
+            />
+          </svg>
+        </button>
       </div>
     </div>
     <div class="hidden-whitespace"></div>
@@ -50,56 +65,77 @@ export default {
 }
 </script>
 <style scoped>
-
-.main-container,
-.row-container,
-.banner {
-  display: flex;
-  align-items: center;
+* {
+  font-family: 'IBM Plex Sans';
+  font-size: 18px;
+  direction: ltr;
+}
+.banner p,
+.banner a {
+  color: white;
+  text-decoration: none;
+}
+.banner-btn {
+  background: none;
+  border: none;
+}
+.banner-btn .close-icon:hover {
+  background-color: #00718a;
+  border-radius: 8px;
+}
+.font-bold {
+  font-weight: 700;
 }
 
 .banner {
-  direction: ltr;
-  justify-content: space-between;
   background-color: #019ec3;
   width: 100%;
-  height: 36px;
-  z-index: 10;
-  position: fixed;
-  top:0;
+  height: 40px;
+  z-index: 20;
+  display: flex;
+}
+.banner-container > div {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
 }
 
-.banner p,
-.banner a,
-.banner button {
-  color: white;
-}
-
-.main-container {
+/* Banner container */
+.banner .banner-container {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin:0 auto;
-  height: inherit;
-  padding: 0 40px;
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.25rem/* 20px */;
+  padding-left: 1.25rem/* 20px */;
 }
-
-.row-container {
-  column-gap: 0.5rem;
-}
-
-.bannerBtn {
-  font-size: 2rem;
-  font-weight: bold;
-}
-.hidden-whitespace {
-  height: 36px;
-}
-
-@media (max-width: 540px) {
-  .main-container {
-    padding: 0 5px;
-    font-size: 0.7rem;
+@media (min-width: 640px) {
+  .banner .banner-container {
+    max-width: 640px;
   }
 }
-
+@media (min-width: 768px) {
+  .banner .banner-container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .banner .banner-container {
+    max-width: 1024px;
+    padding-right: 2.5rem/* 40px */;
+    padding-left: 2.5rem/* 40px */;
+  }
+}
+@media (min-width: 1280px) {
+  .banner .banner-container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .banner .banner-container {
+    max-width: 1536px;
+  }
+}
 </style>
