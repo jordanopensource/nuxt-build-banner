@@ -1,55 +1,61 @@
 # JOSA Build info banner
 
-This is a Nuxt2 banner that displays the Drone build info that are injected into the build args of the docker image during build time in the pipline.
+This is a Nuxt3 module for our banner that displays the Drone build info that are injected into the build args of the docker image during build time in the pipline.
 
 ## Usage
 
 npm install the package
 
 ```bash
-npm i @josango/nuxt-build-banner
+# using npm
+npm i --save-dev @josango/nuxt3-build-banner
+
+# Using pnpm
+pnpm add -D @josango/nuxt3-build-banner
 ```
 
-And Load it into your `nuxt.config.js` modules:
+And Load it into your `nuxt.config.ts` modules:
 
 ```js
-  export default {
+  export default defineNuxtConfig({
   ...
   modules: [
     '@josango/nuxt-build-banner',
   ],
   ....
-}
+})
 ```
 
-Add the following as environmental variables
+Add the following as environmental variables in `.env`
 
 ```env
-TARGET_ENV=
-DRONE_COMMIT_SHA=
-DRONE_BUILD_NUMBER=
-DRONE_BUILD_LINK=
-DRONE_COMMIT_LINK=
-DRONE_REPO_LINK=
-DRONE_BUILD_FINISHED=
+NUXT_PUBLIC_TARGET_ENV=
+NUXT_PUBLIC_BUILD_COMMIT_SHA=
+NUXT_PUBLIC_BUILD_NUMBER=
+NUXT_PUBLIC_BUILD_LINK=
+NUXT_PUBLIC_BUILD_COMMIT_LINK=
+NUXT_PUBLIC_BUILD_REPO_LINK=
+NUXT_PUBLIC_BUILD_TIMESTAMP=
 ```
 
-Make sure to pass them in `nuxt.config.js` as public runtime config
+Make sure to pass them in `nuxt.config.ts` as public runtime config
 
 ```js
-export default {
+export default defineNuxtConfig({
   ...
-    publicRuntimeConfig: {
-    DRONE_COMMIT_SHA: process.env.DRONE_COMMIT_SHA,
-    DRONE_COMMIT_LINK: process.env.DRONE_COMMIT_LINK,
-    DRONE_BUILD_NUMBER: process.env.DRONE_BUILD_NUMBER,
-    DRONE_BUILD_LINK: process.env.DRONE_BUILD_LINK,
-    DRONE_REPO_LINK: process.env.DRONE_REPO_LINK,
-    DRONE_BUILD_FINISHED: process.env.DRONE_BUILD_FINISHED,
-    TARGET_ENV: process.env.TARGET_ENV
-  }
-  ....
-}
+  runtimeConfig: {
+    public: {
+      targetEnv: "",
+      buildCommitSha: "",
+      buildCommitLink: "",
+      buildNumber: "",
+      buildLink: "",
+      buildRepoLink: "",
+      buildTimestamp: "",
+    },
+  },
+  ...
+})
 ```
 
 Last thing load the module inside your default layout page, or where ever you want to display it.
@@ -61,5 +67,27 @@ Last thing load the module inside your default layout page, or where ever you wa
 If you want to display it only when development mode is enabled
 
 ```jsx
-<buildInfoBanner v-if="config.TARGET_ENV==='development'" />
+<buildInfoBanner v-if="useRuntimeConfig().public.targetEnv==='development'" />
+```
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Generate type stubs
+npm run dev:prepare
+
+# Develop with the playground
+npm run dev
+
+# Build the playground
+npm run dev:build
+
+# Run ESLint
+npm run lint
+
+# Release new version
+npm run release
 ```
