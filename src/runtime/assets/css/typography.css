@@ -15,7 +15,3 @@
   src: local('IBM Sans'),
     url(../fonts/IBMPlexSansArabic-Bold.woff2) format('trueType');
 }
-
-*, .header{
-  font-family: 'IBM Sans';
-}

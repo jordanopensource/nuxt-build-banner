@@ -64,9 +64,10 @@ const closeBanner = () => {
 }
 </script>
 <style scoped>
-* {
+.header {
   font-size: 18px;
   direction: ltr;
+  font-family: 'IBM Sans';
 }
 .banner p,
 .banner a {
