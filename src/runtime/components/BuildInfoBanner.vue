@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="!state.bannerClosed"
-    class="banner"
-  >
+  <div v-if="!state.bannerClosed" class="banner" id="josaBuildBanner">
     <div class="banner-container">
       <div>
         <span>🔨</span>
@@ -30,10 +27,7 @@
           <span class="font-bold"> Environment: </span>
           {{ config.public.targetEnv }}
         </p>
-        <button
-          class="banner-btn"
-          @click="closeBanner"
-        >
+        <button class="banner-btn" @click="closeBanner">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -52,22 +46,24 @@
   </div>
 </template>
 <script setup>
-import { reactive } from "vue"
-import { useRuntimeConfig } from "nuxt/app"
+import { reactive } from "vue";
+import { useRuntimeConfig } from "nuxt/app";
 
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 const state = reactive({
   bannerClosed: false,
-})
+});
 const closeBanner = () => {
-  state.bannerClosed = true
-}
+  state.bannerClosed = true;
+};
 </script>
 <style scoped>
-.header {
+#josaBuildBanner {
+  font-family: "IBM Sans";
+}
+.banner {
   font-size: 18px;
   direction: ltr;
-  font-family: 'IBM Sans';
 }
 .banner p,
 .banner a {
@@ -107,8 +103,8 @@ const closeBanner = () => {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 1.25rem/* 20px */;
-  padding-left: 1.25rem/* 20px */;
+  padding-right: 1.25rem /* 20px */;
+  padding-left: 1.25rem /* 20px */;
 }
 @media (min-width: 640px) {
   .banner .banner-container {
@@ -123,8 +119,8 @@ const closeBanner = () => {
 @media (min-width: 1024px) {
   .banner .banner-container {
     max-width: 1024px;
-    padding-right: 2.5rem/* 40px */;
-    padding-left: 2.5rem/* 40px */;
+    padding-right: 2.5rem /* 40px */;
+    padding-left: 2.5rem /* 40px */;
   }
 }
 @media (min-width: 1280px) {
